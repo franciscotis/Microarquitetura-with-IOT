@@ -1,20 +1,24 @@
 
 module architecture (
-	clk_clk,
-	reset_reset_n,
 	btn_export,
-	led_export,
-	rw_writeresponsevalid_n,
+	clk_clk,
+	db_readdata,
 	en_writeresponsevalid_n,
+	led_export,
+	reset_reset_n,
 	rs_writeresponsevalid_n,
-	db_readdata);	
+	rs232_rxd,
+	rs232_txd,
+	rw_writeresponsevalid_n);	
 
-	input		clk_clk;
-	input		reset_reset_n;
 	input	[3:0]	btn_export;
-	output	[3:0]	led_export;
-	output		rw_writeresponsevalid_n;
-	output		en_writeresponsevalid_n;
-	output		rs_writeresponsevalid_n;
+	input		clk_clk;
 	output	[7:0]	db_readdata;
+	output		en_writeresponsevalid_n;
+	output	[3:0]	led_export;
+	input		reset_reset_n;
+	output		rs_writeresponsevalid_n;
+	input		rs232_rxd;
+	output		rs232_txd;
+	output		rw_writeresponsevalid_n;
 endmodule

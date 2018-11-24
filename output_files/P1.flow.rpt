@@ -1,5 +1,5 @@
 Flow report for P1
-Thu Oct 18 21:17:01 2018
+Fri Nov 23 15:16:58 2018
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -40,22 +40,22 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Thu Oct 18 21:16:44 2018       ;
+; Flow Status                        ; Successful - Fri Nov 23 15:16:46 2018       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; P1                                          ;
 ; Top-level Entity Name              ; architecture                                ;
 ; Family                             ; Cyclone IV E                                ;
-; Device                             ; EP4CE6E22C8                                 ;
+; Device                             ; EP4CE30F23C6                                ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 1,874 / 6,272 ( 30 % )                      ;
-;     Total combinational functions  ; 1,739 / 6,272 ( 28 % )                      ;
-;     Dedicated logic registers      ; 919 / 6,272 ( 15 % )                        ;
-; Total registers                    ; 919                                         ;
-; Total pins                         ; 21 / 92 ( 23 % )                            ;
+; Total logic elements               ; 1,861 / 28,848 ( 6 % )                      ;
+;     Total combinational functions  ; 1,734 / 28,848 ( 6 % )                      ;
+;     Dedicated logic registers      ; 1,029 / 28,848 ( 4 % )                      ;
+; Total registers                    ; 1029                                        ;
+; Total pins                         ; 23 / 329 ( 7 % )                            ;
 ; Total virtual pins                 ; 0                                           ;
-; Total memory bits                  ; 207,872 / 276,480 ( 75 % )                  ;
-; Embedded Multiplier 9-bit elements ; 0 / 30 ( 0 % )                              ;
-; Total PLLs                         ; 0 / 2 ( 0 % )                               ;
+; Total memory bits                  ; 207,872 / 608,256 ( 34 % )                  ;
+; Embedded Multiplier 9-bit elements ; 0 / 132 ( 0 % )                             ;
+; Total PLLs                         ; 0 / 4 ( 0 % )                               ;
 +------------------------------------+---------------------------------------------+
 
 
@@ -64,7 +64,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 10/18/2018 21:11:05 ;
+; Start date & time ; 11/23/2018 15:13:47 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; P1                  ;
 +-------------------+---------------------+
@@ -75,12 +75,11 @@ refer to the applicable agreement for further details.
 +-------------------------------------+----------------------------------------------------------------+---------------+--------------+------------+
 ; Assignment Name                     ; Value                                                          ; Default Value ; Entity Name  ; Section Id ;
 +-------------------------------------+----------------------------------------------------------------+---------------+--------------+------------+
-; COMPILER_SIGNATURE_ID               ; 180454980071341.153990785700652                                ; --            ; --           ; --         ;
+; COMPILER_SIGNATURE_ID               ; 88750185252792.154298602608044                                 ; --            ; --           ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                                             ; --            ; --           ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                                              ; --            ; --           ; --         ;
 ; MISC_FILE                           ; architecture/synthesis/../architecture.cmp                     ; --            ; --           ; --         ;
 ; MISC_FILE                           ; architecture/synthesis/../../architecture.qsys                 ; --            ; --           ; --         ;
-; NOMINAL_CORE_SUPPLY_VOLTAGE         ; 1.2V                                                           ; --            ; --           ; --         ;
 ; PARTITION_COLOR                     ; -- (Not supported for targeted family)                         ; --            ; architecture ; Top        ;
 ; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family)                         ; --            ; architecture ; Top        ;
 ; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family)                         ; --            ; architecture ; Top        ;
@@ -89,7 +88,7 @@ refer to the applicable agreement for further details.
 ; PROJECT_OUTPUT_DIRECTORY            ; output_files                                                   ; --            ; --           ; --         ;
 ; SLD_FILE                            ; architecture/synthesis/architecture.regmap                     ; --            ; --           ; --         ;
 ; SLD_FILE                            ; architecture/synthesis/architecture.debuginfo                  ; --            ; --           ; --         ;
-; SLD_INFO                            ; QSYS_NAME architecture HAS_SOPCINFO 1 GENERATION_ID 1539885909 ; --            ; architecture ; --         ;
+; SLD_INFO                            ; QSYS_NAME architecture HAS_SOPCINFO 1 GENERATION_ID 1542984374 ; --            ; architecture ; --         ;
 ; SOPCINFO_FILE                       ; architecture/synthesis/../../architecture.sopcinfo             ; --            ; --           ; --         ;
 ; SYNTHESIS_ONLY_QIP                  ; On                                                             ; --            ; --           ; --         ;
 ; TOP_LEVEL_ENTITY                    ; architecture                                                   ; P1            ; --           ; --         ;
@@ -101,11 +100,11 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:04:19     ; 1.0                     ; 4895 MB             ; 00:03:33                           ;
-; Fitter               ; 00:00:46     ; 1.0                     ; 5286 MB             ; 00:00:37                           ;
-; Assembler            ; 00:00:07     ; 1.0                     ; 4692 MB             ; 00:00:06                           ;
-; Timing Analyzer      ; 00:00:13     ; 1.1                     ; 4757 MB             ; 00:00:12                           ;
-; Total                ; 00:05:25     ; --                      ; --                  ; 00:04:28                           ;
+; Analysis & Synthesis ; 00:01:47     ; 1.0                     ; 4903 MB             ; 00:02:23                           ;
+; Fitter               ; 00:00:41     ; 1.0                     ; 5323 MB             ; 00:00:30                           ;
+; Assembler            ; 00:00:05     ; 1.0                     ; 4706 MB             ; 00:00:05                           ;
+; Timing Analyzer      ; 00:00:09     ; 1.1                     ; 4816 MB             ; 00:00:08                           ;
+; Total                ; 00:02:42     ; --                      ; --                  ; 00:03:06                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -114,10 +113,10 @@ refer to the applicable agreement for further details.
 +----------------------+------------------+------------+------------+----------------+
 ; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
 +----------------------+------------------+------------+------------+----------------+
-; Analysis & Synthesis ; DESKTOP-3ONSD7Q  ; Windows 10 ; 10.0       ; x86_64         ;
-; Fitter               ; DESKTOP-3ONSD7Q  ; Windows 10 ; 10.0       ; x86_64         ;
-; Assembler            ; DESKTOP-3ONSD7Q  ; Windows 10 ; 10.0       ; x86_64         ;
-; Timing Analyzer      ; DESKTOP-3ONSD7Q  ; Windows 10 ; 10.0       ; x86_64         ;
+; Analysis & Synthesis ; fox              ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter               ; fox              ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler            ; fox              ; Windows 10 ; 10.0       ; x86_64         ;
+; Timing Analyzer      ; fox              ; Windows 10 ; 10.0       ; x86_64         ;
 +----------------------+------------------+------------+------------+----------------+
 
 

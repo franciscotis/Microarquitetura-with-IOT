@@ -1,8 +1,30 @@
 # # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
 # 
-preplace inst unsaved.clk_0 -pg 1 -lvl 1 -y 30
-preplace inst unsaved -pg 1 -lvl 1 -y 40 -regy -20
-preplace netloc EXPORT<net_container>unsaved</net_container>(SLAVE)unsaved.reset,(SLAVE)clk_0.clk_in_reset) 1 0 1 NJ
-preplace netloc EXPORT<net_container>unsaved</net_container>(SLAVE)clk_0.clk_in,(SLAVE)unsaved.clk) 1 0 1 NJ
-levelinfo -pg 1 0 50 270
-levelinfo -hier unsaved 60 90 260
+preplace inst architecture.nios2.cpu -pg 1
+preplace inst architecture.nios2.clock_bridge -pg 1
+preplace inst architecture -pg 1 -lvl 1 -y 40 -regy -20
+preplace inst architecture.pi -pg 1 -lvl 3 -y 30
+preplace inst architecture.memory -pg 1 -lvl 3 -y 130
+preplace inst architecture.jtag -pg 1 -lvl 3 -y 210
+preplace inst architecture.clk -pg 1 -lvl 1 -y 200
+preplace inst architecture.nios2.reset_bridge -pg 1
+preplace inst architecture.lcd -pg 1 -lvl 3 -y 530
+preplace inst architecture.po -pg 1 -lvl 3 -y 430
+preplace inst architecture.nios2 -pg 1 -lvl 2 -y 180
+preplace inst architecture.rs232 -pg 1 -lvl 3 -y 310
+preplace netloc POINT_TO_POINT<net_container>architecture</net_container>(SLAVE)lcd.nios_custom_instruction_slave,(MASTER)nios2.custom_instruction_master) 1 2 1 720
+preplace netloc EXPORT<net_container>architecture</net_container>(SLAVE)clk.clk_in_reset,(SLAVE)architecture.reset) 1 0 1 NJ
+preplace netloc INTERCONNECT<net_container>architecture</net_container>(MASTER)clk.clk_reset,(MASTER)nios2.debug_reset_request,(SLAVE)pi.reset,(SLAVE)nios2.reset,(SLAVE)po.reset,(SLAVE)rs232.reset,(SLAVE)memory.reset1,(SLAVE)jtag.reset) 1 1 2 260 320 780
+preplace netloc EXPORT<net_container>architecture</net_container>(SLAVE)architecture.en,(SLAVE)lcd.conduit_end_1) 1 0 3 NJ 440 NJ 440 NJ
+preplace netloc EXPORT<net_container>architecture</net_container>(SLAVE)lcd.conduit_end_3,(SLAVE)architecture.db) 1 0 3 NJ 480 NJ 480 NJ
+preplace netloc EXPORT<net_container>architecture</net_container>(SLAVE)architecture.rs232,(SLAVE)rs232.external_connection) 1 0 3 NJ 380 NJ 380 NJ
+preplace netloc EXPORT<net_container>architecture</net_container>(SLAVE)architecture.rw,(SLAVE)lcd.conduit_end) 1 0 3 NJ 420 NJ 420 NJ
+preplace netloc EXPORT<net_container>architecture</net_container>(SLAVE)architecture.rs,(SLAVE)lcd.conduit_end_2) 1 0 3 NJ 460 NJ 460 NJ
+preplace netloc FAN_OUT<net_container>architecture</net_container>(MASTER)nios2.irq,(SLAVE)jtag.irq,(SLAVE)rs232.irq) 1 2 1 860
+preplace netloc EXPORT<net_container>architecture</net_container>(SLAVE)architecture.led,(SLAVE)po.external_connection) 1 0 3 NJ 400 NJ 400 NJ
+preplace netloc EXPORT<net_container>architecture</net_container>(SLAVE)architecture.clk,(SLAVE)clk.clk_in) 1 0 1 NJ
+preplace netloc INTERCONNECT<net_container>architecture</net_container>(SLAVE)pi.s1,(SLAVE)rs232.s1,(MASTER)nios2.instruction_master,(SLAVE)po.s1,(SLAVE)jtag.avalon_jtag_slave,(SLAVE)memory.s1,(MASTER)nios2.data_master,(SLAVE)nios2.debug_mem_slave) 1 1 2 300 360 800
+preplace netloc EXPORT<net_container>architecture</net_container>(SLAVE)architecture.btn,(SLAVE)pi.external_connection) 1 0 3 NJ 60 NJ 60 NJ
+preplace netloc FAN_OUT<net_container>architecture</net_container>(SLAVE)nios2.clk,(SLAVE)po.clk,(MASTER)clk.clk,(SLAVE)pi.clk,(SLAVE)jtag.clk,(SLAVE)memory.clk1,(SLAVE)rs232.clk) 1 1 2 280 340 820
+levelinfo -pg 1 0 50 1110
+levelinfo -hier architecture 60 90 420 890 1100

@@ -153,6 +153,15 @@ ELF_PATCH_FLAG  += --simulation_enabled false
 # Small-footprint (polled mode) driver none 
 # setting altera_avalon_jtag_uart_driver.enable_small_driver is false
 
+# Enable driver ioctl() support. This feature is not compatible with the 
+# 'small' driver; ioctl() support will not be compiled if either the UART 
+# 'enable_small_driver' or HAL 'enable_reduced_device_drivers' settings are 
+# enabled. none 
+# setting altera_avalon_uart_driver.enable_ioctl is false
+
+# Small-footprint (polled mode) driver none 
+# setting altera_avalon_uart_driver.enable_small_driver is false
+
 # Build a custom version of newlib with the specified space-separated compiler 
 # flags. The custom newlib build will be placed in the <bsp root>/newlib 
 # directory, and will be used only for applications that utilize this BSP. 
@@ -341,13 +350,13 @@ ELF_PATCH_FLAG  += --stderr_dev jtag
 
 # Slave descriptor of STDIN character-mode device. This setting is used by the 
 # ALT_STDIN family of defines in system.h. none 
-# setting hal.stdin is jtag
-ELF_PATCH_FLAG  += --stdin_dev jtag
+# setting hal.stdin is rs232
+ELF_PATCH_FLAG  += --stdin_dev rs232
 
 # Slave descriptor of STDOUT character-mode device. This setting is used by the 
 # ALT_STDOUT family of defines in system.h. none 
-# setting hal.stdout is jtag
-ELF_PATCH_FLAG  += --stdout_dev jtag
+# setting hal.stdout is rs232
+ELF_PATCH_FLAG  += --stdout_dev rs232
 
 
 #------------------------------------------------------------------------------

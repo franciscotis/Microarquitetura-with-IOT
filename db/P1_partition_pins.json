@@ -60,6 +60,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "rs232_txd",
+					"strict" : false
+				},
+				{
 					"name" : "clk_clk",
 					"strict" : false
 				},
@@ -81,6 +85,10 @@
 				},
 				{
 					"name" : "reset_reset_n",
+					"strict" : false
+				},
+				{
+					"name" : "rs232_rxd",
 					"strict" : false
 				},
 				{

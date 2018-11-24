@@ -7,6 +7,8 @@
 			led_export              : out std_logic_vector(3 downto 0);                    -- export
 			reset_reset_n           : in  std_logic                    := 'X';             -- reset_n
 			rs_writeresponsevalid_n : out std_logic;                                       -- writeresponsevalid_n
+			rs232_rxd               : in  std_logic                    := 'X';             -- rxd
+			rs232_txd               : out std_logic;                                       -- txd
 			rw_writeresponsevalid_n : out std_logic                                        -- writeresponsevalid_n
 		);
 	end component architecture;

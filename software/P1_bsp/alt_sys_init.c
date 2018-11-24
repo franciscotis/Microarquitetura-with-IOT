@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2' in SOPC Builder design 'architecture'
  * SOPC Builder design path: ../../architecture.sopcinfo
  *
- * Generated: Fri Oct 12 11:28:56 BRT 2018
+ * Generated: Fri Nov 23 13:00:20 GMT 2018
  */
 
 /*
@@ -60,6 +60,7 @@
 
 #include "altera_nios2_gen2_irq.h"
 #include "altera_avalon_jtag_uart.h"
+#include "altera_avalon_uart.h"
 
 /*
  * Allocate the device storage
@@ -67,6 +68,7 @@
 
 ALTERA_NIOS2_GEN2_IRQ_INSTANCE ( NIOS2, nios2);
 ALTERA_AVALON_JTAG_UART_INSTANCE ( JTAG, jtag);
+ALTERA_AVALON_UART_INSTANCE ( RS232, rs232);
 
 /*
  * Initialize the interrupt controller devices
@@ -90,4 +92,5 @@ void alt_irq_init ( const void* base )
 void alt_sys_init( void )
 {
     ALTERA_AVALON_JTAG_UART_INIT ( JTAG, jtag);
+    ALTERA_AVALON_UART_INIT ( RS232, rs232);
 }

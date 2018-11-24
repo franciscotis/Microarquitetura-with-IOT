@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2' in SOPC Builder design 'architecture'
  * SOPC Builder design path: ../../architecture.sopcinfo
  *
- * Generated: Fri Oct 12 11:28:56 BRT 2018
+ * Generated: Sat Nov 24 18:52:23 UTC 2018
  */
 
 /*
@@ -145,6 +145,7 @@
 #define __ALTERA_AVALON_JTAG_UART
 #define __ALTERA_AVALON_ONCHIP_MEMORY2
 #define __ALTERA_AVALON_PIO
+#define __ALTERA_AVALON_UART
 #define __ALTERA_NIOS2_GEN2
 #define __LCD
 
@@ -165,23 +166,23 @@
 #define ALT_NUM_INTERNAL_INTERRUPT_CONTROLLERS 1
 #define ALT_NUM_INTERRUPT_CONTROLLERS 1
 #define ALT_STDERR "/dev/jtag"
-#define ALT_STDERR_BASE 0x0
+#define ALT_STDERR_BASE 0x11048
 #define ALT_STDERR_DEV jtag
 #define ALT_STDERR_IS_JTAG_UART
 #define ALT_STDERR_PRESENT
 #define ALT_STDERR_TYPE "altera_avalon_jtag_uart"
-#define ALT_STDIN "/dev/jtag"
-#define ALT_STDIN_BASE 0x0
-#define ALT_STDIN_DEV jtag
-#define ALT_STDIN_IS_JTAG_UART
+#define ALT_STDIN "/dev/rs232"
+#define ALT_STDIN_BASE 0x11000
+#define ALT_STDIN_DEV rs232
+#define ALT_STDIN_IS_UART
 #define ALT_STDIN_PRESENT
-#define ALT_STDIN_TYPE "altera_avalon_jtag_uart"
-#define ALT_STDOUT "/dev/jtag"
-#define ALT_STDOUT_BASE 0x0
-#define ALT_STDOUT_DEV jtag
-#define ALT_STDOUT_IS_JTAG_UART
+#define ALT_STDIN_TYPE "altera_avalon_uart"
+#define ALT_STDOUT "/dev/rs232"
+#define ALT_STDOUT_BASE 0x11000
+#define ALT_STDOUT_DEV rs232
+#define ALT_STDOUT_IS_UART
 #define ALT_STDOUT_PRESENT
-#define ALT_STDOUT_TYPE "altera_avalon_jtag_uart"
+#define ALT_STDOUT_TYPE "altera_avalon_uart"
 #define ALT_SYSTEM_NAME "architecture"
 
 
@@ -202,7 +203,7 @@
  */
 
 #define ALT_MODULE_CLASS_jtag altera_avalon_jtag_uart
-#define JTAG_BASE 0x0
+#define JTAG_BASE 0x11048
 #define JTAG_IRQ 0
 #define JTAG_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define JTAG_NAME "/dev/jtag"
@@ -249,7 +250,7 @@
  */
 
 #define ALT_MODULE_CLASS_pi altera_avalon_pio
-#define PI_BASE 0x11010
+#define PI_BASE 0x11030
 #define PI_BIT_CLEARING_EDGE_REGISTER 0
 #define PI_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define PI_CAPTURE 0
@@ -276,7 +277,7 @@
  */
 
 #define ALT_MODULE_CLASS_po altera_avalon_pio
-#define PO_BASE 0x11000
+#define PO_BASE 0x11020
 #define PO_BIT_CLEARING_EDGE_REGISTER 0
 #define PO_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define PO_CAPTURE 0
@@ -295,5 +296,30 @@
 #define PO_RESET_VALUE 0
 #define PO_SPAN 16
 #define PO_TYPE "altera_avalon_pio"
+
+
+/*
+ * rs232 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_rs232 altera_avalon_uart
+#define RS232_BASE 0x11000
+#define RS232_BAUD 115200
+#define RS232_DATA_BITS 8
+#define RS232_FIXED_BAUD 1
+#define RS232_FREQ 50000000
+#define RS232_IRQ 1
+#define RS232_IRQ_INTERRUPT_CONTROLLER_ID 0
+#define RS232_NAME "/dev/rs232"
+#define RS232_PARITY 'N'
+#define RS232_SIM_CHAR_STREAM ""
+#define RS232_SIM_TRUE_BAUD 0
+#define RS232_SPAN 32
+#define RS232_STOP_BITS 1
+#define RS232_SYNC_REG_DEPTH 2
+#define RS232_TYPE "altera_avalon_uart"
+#define RS232_USE_CTS_RTS 0
+#define RS232_USE_EOP_REGISTER 0
 
 #endif /* __SYSTEM_H_ */

@@ -142,7 +142,9 @@ ACDS_VERSION := 18.1
 ELF := P1.elf
 
 # Paths to C, C++, and assembly source files.
-C_SRCS := main.c
+C_SRCS += main.c
+C_SRCS += lcd.c
+C_SRCS += uart.c
 CXX_SRCS :=
 ASM_SRCS :=
 
