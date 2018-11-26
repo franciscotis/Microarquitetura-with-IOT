@@ -21,6 +21,7 @@
 #define MQTT_DISCONNECT_SIZE "AT+CIPSEND=2"
 #define MQTT_DISCONNECT "\xe0\x00"
 
-void uart_send(char *data);
+void uart_write(char *d, int c);
+void uart_read();
 
 #endif

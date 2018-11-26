@@ -350,13 +350,13 @@ ELF_PATCH_FLAG  += --stderr_dev jtag
 
 # Slave descriptor of STDIN character-mode device. This setting is used by the 
 # ALT_STDIN family of defines in system.h. none 
-# setting hal.stdin is rs232
-ELF_PATCH_FLAG  += --stdin_dev rs232
+# setting hal.stdin is jtag
+ELF_PATCH_FLAG  += --stdin_dev jtag
 
 # Slave descriptor of STDOUT character-mode device. This setting is used by the 
 # ALT_STDOUT family of defines in system.h. none 
-# setting hal.stdout is rs232
-ELF_PATCH_FLAG  += --stdout_dev rs232
+# setting hal.stdout is jtag
+ELF_PATCH_FLAG  += --stdout_dev jtag
 
 
 #------------------------------------------------------------------------------

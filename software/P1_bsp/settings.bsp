@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Nov 24, 2018 6:52:42 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1543085563044</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Nov 26, 2018 1:17:18 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1543238238260</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\Users\szk\Documents\GitHub\Microarquitetura-with-IOT\software\P1_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\architecture.sopcinfo</SopcDesignFile>
@@ -194,7 +194,7 @@
                 <SettingName>hal.stdin</SettingName>
                 <Identifier>none</Identifier>
                 <Type>UnquotedString</Type>
-                <Value>rs232</Value>
+                <Value>jtag</Value>
                 <DefaultValue>none</DefaultValue>
                 <DestinationFile>system_h_define</DestinationFile>
                 <Description>Slave descriptor of STDIN character-mode device. This setting is used by the ALT_STDIN family of defines in system.h.</Description>
@@ -206,7 +206,7 @@
                 <SettingName>hal.stdout</SettingName>
                 <Identifier>none</Identifier>
                 <Type>UnquotedString</Type>
-                <Value>rs232</Value>
+                <Value>jtag</Value>
                 <DefaultValue>none</DefaultValue>
                 <DestinationFile>system_h_define</DestinationFile>
                 <Description>Slave descriptor of STDOUT character-mode device. This setting is used by the ALT_STDOUT family of defines in system.h.</Description>

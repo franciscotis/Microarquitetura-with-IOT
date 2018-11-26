@@ -6,11 +6,11 @@
 #include "uart.h"
 
 int main() {
+	/*
 	lcd_init();
 
-	uart_send(WIFI_MODE);
-	uart_send(WIFI_CONNECT);
-
+	uart_write(WIFI_MODE, 1);
+	uart_write(WIFI_CONNECT, 1);
 
 	char opcoes[5][7]   = {"Menu 01", "Menu 02", "Menu 03", "Menu 04", "Menu 05"};
 	char submenu[5][11] = {"Mensagem 01", "Mensagem 02", "Mensagem 03", "Mensagem 04", "Mensagem 05"};
@@ -67,24 +67,24 @@ int main() {
 				lcd_print(submenu[menu], 11);
 				IOWR(PO_BASE, 0, menu);
 
-				uart_send(TCP_CONNECT);
+				uart_write(TCP_CONNECT, 1);
 				usleep(100000);
 
-				uart_send(MQTT_CONNECT_SIZE); uart_send(MQTT_CONNECT);
+				uart_write(MQTT_CONNECT_SIZE, 1); uart_write(MQTT_CONNECT, 0);
 				usleep(100000);
 
-				uart_send(MESSAGE_SIZE);
-				if(menu == 0)      uart_send(MESSAGE_0);
-				else if(menu == 1) uart_send(MESSAGE_1);
-				else if(menu == 2) uart_send(MESSAGE_2);
-				else if(menu == 3) uart_send(MESSAGE_3);
-				else 			   uart_send(MESSAGE_4);
+				uart_write(MESSAGE_SIZE, 1);
+				if(menu == 0)      uart_write(MESSAGE_0, 0);
+				else if(menu == 1) uart_write(MESSAGE_1, 0);
+				else if(menu == 2) uart_write(MESSAGE_2, 0);
+				else if(menu == 3) uart_write(MESSAGE_3, 0);
+				else 			   uart_write(MESSAGE_4, 0);
 				usleep(100000);
 
-				uart_send(MQTT_DISCONNECT_SIZE); uart_send(MQTT_DISCONNECT);
+				uart_write(MQTT_DISCONNECT_SIZE, 1); uart_write(MQTT_DISCONNECT, 0);
 				usleep(100000);
 
-				uart_send(TCP_DISCONNECT);
+				uart_write(TCP_DISCONNECT, 1);
 
 			}else {
 				lcd_print(opcoes[menu], 7);
@@ -94,6 +94,24 @@ int main() {
 			estado = 0;
 		}
 	}
+	*/
+
+	uart_write(WIFI_MODE, 1); uart_read();
+	uart_write(WIFI_CONNECT, 1); uart_read();
+
+	uart_write(TCP_CONNECT, 1); uart_read();
+	usleep(100000);
+
+	uart_write(MQTT_CONNECT_SIZE, 1); uart_write(MQTT_CONNECT, 0);
+	usleep(100000);
+
+	uart_write(MESSAGE_SIZE, 1); uart_write(MESSAGE_0, 0);
+	usleep(100000);
+
+	uart_write(MQTT_DISCONNECT_SIZE, 1); uart_write(MQTT_DISCONNECT, 0);
+	usleep(100000);
+
+	uart_write(TCP_DISCONNECT, 1);
 
 	return 0;
 }
