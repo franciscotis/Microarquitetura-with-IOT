@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Nov 26, 2018 1:17:18 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1543238238260</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Nov 27, 2018 1:08:18 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1543324098607</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\Users\szk\Documents\GitHub\Microarquitetura-with-IOT\software\P1_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\architecture.sopcinfo</SopcDesignFile>
@@ -929,7 +929,7 @@
                 <attributes>memory</attributes>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>rs232</slaveDescriptor>
+                <slaveDescriptor>uart</slaveDescriptor>
                 <addressRange>0x00011000 - 0x0001101F</addressRange>
                 <addressSpan>32</addressSpan>
                 <attributes>printable</attributes>

@@ -60,7 +60,7 @@
 					"strict" : false
 				},
 				{
-					"name" : "rs232_txd",
+					"name" : "uart_txd",
 					"strict" : false
 				},
 				{
@@ -88,7 +88,7 @@
 					"strict" : false
 				},
 				{
-					"name" : "rs232_rxd",
+					"name" : "uart_rxd",
 					"strict" : false
 				},
 				{

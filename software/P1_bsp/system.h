@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2' in SOPC Builder design 'architecture'
  * SOPC Builder design path: ../../architecture.sopcinfo
  *
- * Generated: Mon Nov 26 13:16:36 UTC 2018
+ * Generated: Mon Nov 26 18:26:45 UTC 2018
  */
 
 /*
@@ -299,27 +299,27 @@
 
 
 /*
- * rs232 configuration
+ * uart configuration
  *
  */
 
-#define ALT_MODULE_CLASS_rs232 altera_avalon_uart
-#define RS232_BASE 0x11000
-#define RS232_BAUD 115200
-#define RS232_DATA_BITS 8
-#define RS232_FIXED_BAUD 1
-#define RS232_FREQ 50000000
-#define RS232_IRQ 1
-#define RS232_IRQ_INTERRUPT_CONTROLLER_ID 0
-#define RS232_NAME "/dev/rs232"
-#define RS232_PARITY 'N'
-#define RS232_SIM_CHAR_STREAM ""
-#define RS232_SIM_TRUE_BAUD 0
-#define RS232_SPAN 32
-#define RS232_STOP_BITS 1
-#define RS232_SYNC_REG_DEPTH 2
-#define RS232_TYPE "altera_avalon_uart"
-#define RS232_USE_CTS_RTS 0
-#define RS232_USE_EOP_REGISTER 0
+#define ALT_MODULE_CLASS_uart altera_avalon_uart
+#define UART_BASE 0x11000
+#define UART_BAUD 115200
+#define UART_DATA_BITS 8
+#define UART_FIXED_BAUD 1
+#define UART_FREQ 50000000
+#define UART_IRQ 1
+#define UART_IRQ_INTERRUPT_CONTROLLER_ID 0
+#define UART_NAME "/dev/uart"
+#define UART_PARITY 'N'
+#define UART_SIM_CHAR_STREAM ""
+#define UART_SIM_TRUE_BAUD 0
+#define UART_SPAN 32
+#define UART_STOP_BITS 1
+#define UART_SYNC_REG_DEPTH 2
+#define UART_TYPE "altera_avalon_uart"
+#define UART_USE_CTS_RTS 0
+#define UART_USE_EOP_REGISTER 0
 
 #endif /* __SYSTEM_H_ */

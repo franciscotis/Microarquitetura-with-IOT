@@ -4,7 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(EP4CE6E22) Path("C:/Users/szk/Documents/semestre-5/sd/problemas/problema-1/projeto/output_files/") File("P1.sof") MfrSpec(OpMask(1));
+		Device PartName(EP4CE30F23) Path("C:/Users/szk/Documents/GitHub/Microarquitetura-with-IOT/output_files/") File("P1.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 

@@ -1,39 +1,26 @@
 #include <stdio.h>
-#include <unistd.h>
-#include <string.h>
-#include "sys/alt_stdio.h"
-#include "system.h"
-#include "altera_avalon_jtag_uart_regs.h"
 #include "altera_avalon_uart_regs.h"
+#include "system.h"
 
-void uart_write(char *d, int c) {
-	int l = strlen(d);
+void uart_write(char *d, int c, int t) {
+	char *p = d;
 
-    while(IORD_ALTERA_AVALON_UART_STATUS(RS232_BASE) != 0x40);
+	while(1) {
+		while(!(IORD_ALTERA_AVALON_UART_STATUS(UART_BASE) & ALTERA_AVALON_UART_STATUS_TRDY_MSK));
 
-    for (int i = 0; i < l; i++) {
-    	IOWR_ALTERA_AVALON_UART_TXDATA(RS232_BASE, d[i]);
-    	usleep(1000);
-    }
+		if(*p == '\n') {
+			if(c) IOWR_ALTERA_AVALON_UART_TXDATA(UART_BASE, *p);
+			break;
+		}
 
-    if(c) {
-    	IOWR_ALTERA_AVALON_UART_TXDATA(RS232_BASE, '\r');
-    	usleep(1000);
+		IOWR_ALTERA_AVALON_UART_TXDATA(UART_BASE, *p);
+		p++;
+	}
 
-    	IOWR_ALTERA_AVALON_UART_TXDATA(RS232_BASE, '\n');
-    	usleep(1000);
-    }
-}
+	while(!(IORD_ALTERA_AVALON_UART_STATUS(UART_BASE) & ALTERA_AVALON_UART_STATUS_RRDY_MSK));
 
-void uart_read() {
-	char d;
-
-    while(1) {
-    	if(IORD_ALTERA_AVALON_UART_STATUS(RS232_BASE) & 0x80) {
-    		d = IORD_ALTERA_AVALON_UART_RXDATA(RS232_BASE);
-	        printf("%c", d);
-
-	        if(d == 'K') return;
-    	}
+	while(t--) {
+		if(IORD_ALTERA_AVALON_UART_STATUS(UART_BASE) & ALTERA_AVALON_UART_STATUS_RRDY_MSK)
+			printf("%c", IORD_ALTERA_AVALON_UART_RXDATA(UART_BASE));
 	}
 }

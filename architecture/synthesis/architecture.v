@@ -11,9 +11,9 @@ module architecture (
 		output wire [3:0] led_export,              //   led.export
 		input  wire       reset_reset_n,           // reset.reset_n
 		output wire       rs_writeresponsevalid_n, //    rs.writeresponsevalid_n
-		input  wire       rs232_rxd,               // rs232.rxd
-		output wire       rs232_txd,               //      .txd
-		output wire       rw_writeresponsevalid_n  //    rw.writeresponsevalid_n
+		output wire       rw_writeresponsevalid_n, //    rw.writeresponsevalid_n
+		input  wire       uart_rxd,                //  uart.rxd
+		output wire       uart_txd                 //      .txd
 	);
 
 	wire         nios2_custom_instruction_master_readra;                                   // nios2:D_ci_readra -> nios2_custom_instruction_master_translator:ci_slave_readra
@@ -113,17 +113,17 @@ module architecture (
 	wire   [1:0] mm_interconnect_0_po_s1_address;                                          // mm_interconnect_0:po_s1_address -> po:address
 	wire         mm_interconnect_0_po_s1_write;                                            // mm_interconnect_0:po_s1_write -> po:write_n
 	wire  [31:0] mm_interconnect_0_po_s1_writedata;                                        // mm_interconnect_0:po_s1_writedata -> po:writedata
-	wire         mm_interconnect_0_rs232_s1_chipselect;                                    // mm_interconnect_0:rs232_s1_chipselect -> rs232:chipselect
-	wire  [15:0] mm_interconnect_0_rs232_s1_readdata;                                      // rs232:readdata -> mm_interconnect_0:rs232_s1_readdata
-	wire   [2:0] mm_interconnect_0_rs232_s1_address;                                       // mm_interconnect_0:rs232_s1_address -> rs232:address
-	wire         mm_interconnect_0_rs232_s1_read;                                          // mm_interconnect_0:rs232_s1_read -> rs232:read_n
-	wire         mm_interconnect_0_rs232_s1_begintransfer;                                 // mm_interconnect_0:rs232_s1_begintransfer -> rs232:begintransfer
-	wire         mm_interconnect_0_rs232_s1_write;                                         // mm_interconnect_0:rs232_s1_write -> rs232:write_n
-	wire  [15:0] mm_interconnect_0_rs232_s1_writedata;                                     // mm_interconnect_0:rs232_s1_writedata -> rs232:writedata
+	wire         mm_interconnect_0_uart_s1_chipselect;                                     // mm_interconnect_0:uart_s1_chipselect -> uart:chipselect
+	wire  [15:0] mm_interconnect_0_uart_s1_readdata;                                       // uart:readdata -> mm_interconnect_0:uart_s1_readdata
+	wire   [2:0] mm_interconnect_0_uart_s1_address;                                        // mm_interconnect_0:uart_s1_address -> uart:address
+	wire         mm_interconnect_0_uart_s1_read;                                           // mm_interconnect_0:uart_s1_read -> uart:read_n
+	wire         mm_interconnect_0_uart_s1_begintransfer;                                  // mm_interconnect_0:uart_s1_begintransfer -> uart:begintransfer
+	wire         mm_interconnect_0_uart_s1_write;                                          // mm_interconnect_0:uart_s1_write -> uart:write_n
+	wire  [15:0] mm_interconnect_0_uart_s1_writedata;                                      // mm_interconnect_0:uart_s1_writedata -> uart:writedata
 	wire         irq_mapper_receiver0_irq;                                                 // jtag:av_irq -> irq_mapper:receiver0_irq
-	wire         irq_mapper_receiver1_irq;                                                 // rs232:irq -> irq_mapper:receiver1_irq
+	wire         irq_mapper_receiver1_irq;                                                 // uart:irq -> irq_mapper:receiver1_irq
 	wire  [31:0] nios2_irq_irq;                                                            // irq_mapper:sender_irq -> nios2:irq
-	wire         rst_controller_reset_out_reset;                                           // rst_controller:reset_out -> [irq_mapper:reset, jtag:rst_n, memory:reset, mm_interconnect_0:nios2_reset_reset_bridge_in_reset_reset, nios2:reset_n, pi:reset_n, po:reset_n, rs232:reset_n, rst_translator:in_reset]
+	wire         rst_controller_reset_out_reset;                                           // rst_controller:reset_out -> [irq_mapper:reset, jtag:rst_n, memory:reset, mm_interconnect_0:nios2_reset_reset_bridge_in_reset_reset, nios2:reset_n, pi:reset_n, po:reset_n, rst_translator:in_reset, uart:reset_n]
 	wire         rst_controller_reset_out_reset_req;                                       // rst_controller:reset_req -> [memory:reset_req, nios2:reset_req, rst_translator:reset_req_in]
 	wire         nios2_debug_reset_request_reset;                                          // nios2:debug_reset_request -> rst_controller:reset_in1
 
@@ -230,19 +230,19 @@ module architecture (
 		.out_port   (led_export)                          // external_connection.export
 	);
 
-	architecture_rs232 rs232 (
-		.clk           (clk_clk),                                  //                 clk.clk
-		.reset_n       (~rst_controller_reset_out_reset),          //               reset.reset_n
-		.address       (mm_interconnect_0_rs232_s1_address),       //                  s1.address
-		.begintransfer (mm_interconnect_0_rs232_s1_begintransfer), //                    .begintransfer
-		.chipselect    (mm_interconnect_0_rs232_s1_chipselect),    //                    .chipselect
-		.read_n        (~mm_interconnect_0_rs232_s1_read),         //                    .read_n
-		.write_n       (~mm_interconnect_0_rs232_s1_write),        //                    .write_n
-		.writedata     (mm_interconnect_0_rs232_s1_writedata),     //                    .writedata
-		.readdata      (mm_interconnect_0_rs232_s1_readdata),      //                    .readdata
-		.rxd           (rs232_rxd),                                // external_connection.export
-		.txd           (rs232_txd),                                //                    .export
-		.irq           (irq_mapper_receiver1_irq)                  //                 irq.irq
+	architecture_uart uart (
+		.clk           (clk_clk),                                 //                 clk.clk
+		.reset_n       (~rst_controller_reset_out_reset),         //               reset.reset_n
+		.address       (mm_interconnect_0_uart_s1_address),       //                  s1.address
+		.begintransfer (mm_interconnect_0_uart_s1_begintransfer), //                    .begintransfer
+		.chipselect    (mm_interconnect_0_uart_s1_chipselect),    //                    .chipselect
+		.read_n        (~mm_interconnect_0_uart_s1_read),         //                    .read_n
+		.write_n       (~mm_interconnect_0_uart_s1_write),        //                    .write_n
+		.writedata     (mm_interconnect_0_uart_s1_writedata),     //                    .writedata
+		.readdata      (mm_interconnect_0_uart_s1_readdata),      //                    .readdata
+		.rxd           (uart_rxd),                                // external_connection.export
+		.txd           (uart_txd),                                //                    .export
+		.irq           (irq_mapper_receiver1_irq)                 //                 irq.irq
 	);
 
 	altera_customins_master_translator #(
@@ -432,13 +432,13 @@ module architecture (
 		.po_s1_readdata                          (mm_interconnect_0_po_s1_readdata),                     //                                  .readdata
 		.po_s1_writedata                         (mm_interconnect_0_po_s1_writedata),                    //                                  .writedata
 		.po_s1_chipselect                        (mm_interconnect_0_po_s1_chipselect),                   //                                  .chipselect
-		.rs232_s1_address                        (mm_interconnect_0_rs232_s1_address),                   //                          rs232_s1.address
-		.rs232_s1_write                          (mm_interconnect_0_rs232_s1_write),                     //                                  .write
-		.rs232_s1_read                           (mm_interconnect_0_rs232_s1_read),                      //                                  .read
-		.rs232_s1_readdata                       (mm_interconnect_0_rs232_s1_readdata),                  //                                  .readdata
-		.rs232_s1_writedata                      (mm_interconnect_0_rs232_s1_writedata),                 //                                  .writedata
-		.rs232_s1_begintransfer                  (mm_interconnect_0_rs232_s1_begintransfer),             //                                  .begintransfer
-		.rs232_s1_chipselect                     (mm_interconnect_0_rs232_s1_chipselect)                 //                                  .chipselect
+		.uart_s1_address                         (mm_interconnect_0_uart_s1_address),                    //                           uart_s1.address
+		.uart_s1_write                           (mm_interconnect_0_uart_s1_write),                      //                                  .write
+		.uart_s1_read                            (mm_interconnect_0_uart_s1_read),                       //                                  .read
+		.uart_s1_readdata                        (mm_interconnect_0_uart_s1_readdata),                   //                                  .readdata
+		.uart_s1_writedata                       (mm_interconnect_0_uart_s1_writedata),                  //                                  .writedata
+		.uart_s1_begintransfer                   (mm_interconnect_0_uart_s1_begintransfer),              //                                  .begintransfer
+		.uart_s1_chipselect                      (mm_interconnect_0_uart_s1_chipselect)                  //                                  .chipselect
 	);
 
 	architecture_irq_mapper irq_mapper (

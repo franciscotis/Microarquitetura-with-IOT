@@ -19,9 +19,9 @@ led_export[2] <= architecture_po:po.out_port
 led_export[3] <= architecture_po:po.out_port
 reset_reset_n => _.IN1
 rs_writeresponsevalid_n <= lcd:lcd.rs
-rs232_rxd => rs232_rxd.IN1
-rs232_txd <= architecture_rs232:rs232.txd
 rw_writeresponsevalid_n <= lcd:lcd.rw
+uart_rxd => uart_rxd.IN1
+uart_txd <= architecture_uart:uart.txd
 
 
 |architecture|architecture_jtag:jtag
@@ -8474,7 +8474,7 @@ readdata[30] <= <GND>
 readdata[31] <= <GND>
 
 
-|architecture|architecture_rs232:rs232
+|architecture|architecture_uart:uart
 address[0] => address[0].IN1
 address[1] => address[1].IN1
 address[2] => address[2].IN1
@@ -8501,29 +8501,29 @@ writedata[12] => writedata[12].IN1
 writedata[13] => writedata[13].IN1
 writedata[14] => writedata[14].IN1
 writedata[15] => writedata[15].IN1
-dataavailable <= architecture_rs232_regs:the_architecture_rs232_regs.dataavailable
-irq <= architecture_rs232_regs:the_architecture_rs232_regs.irq
-readdata[0] <= architecture_rs232_regs:the_architecture_rs232_regs.readdata
-readdata[1] <= architecture_rs232_regs:the_architecture_rs232_regs.readdata
-readdata[2] <= architecture_rs232_regs:the_architecture_rs232_regs.readdata
-readdata[3] <= architecture_rs232_regs:the_architecture_rs232_regs.readdata
-readdata[4] <= architecture_rs232_regs:the_architecture_rs232_regs.readdata
-readdata[5] <= architecture_rs232_regs:the_architecture_rs232_regs.readdata
-readdata[6] <= architecture_rs232_regs:the_architecture_rs232_regs.readdata
-readdata[7] <= architecture_rs232_regs:the_architecture_rs232_regs.readdata
-readdata[8] <= architecture_rs232_regs:the_architecture_rs232_regs.readdata
-readdata[9] <= architecture_rs232_regs:the_architecture_rs232_regs.readdata
-readdata[10] <= architecture_rs232_regs:the_architecture_rs232_regs.readdata
-readdata[11] <= architecture_rs232_regs:the_architecture_rs232_regs.readdata
-readdata[12] <= architecture_rs232_regs:the_architecture_rs232_regs.readdata
-readdata[13] <= architecture_rs232_regs:the_architecture_rs232_regs.readdata
-readdata[14] <= architecture_rs232_regs:the_architecture_rs232_regs.readdata
-readdata[15] <= architecture_rs232_regs:the_architecture_rs232_regs.readdata
-readyfordata <= architecture_rs232_regs:the_architecture_rs232_regs.readyfordata
-txd <= architecture_rs232_tx:the_architecture_rs232_tx.txd
+dataavailable <= architecture_uart_regs:the_architecture_uart_regs.dataavailable
+irq <= architecture_uart_regs:the_architecture_uart_regs.irq
+readdata[0] <= architecture_uart_regs:the_architecture_uart_regs.readdata
+readdata[1] <= architecture_uart_regs:the_architecture_uart_regs.readdata
+readdata[2] <= architecture_uart_regs:the_architecture_uart_regs.readdata
+readdata[3] <= architecture_uart_regs:the_architecture_uart_regs.readdata
+readdata[4] <= architecture_uart_regs:the_architecture_uart_regs.readdata
+readdata[5] <= architecture_uart_regs:the_architecture_uart_regs.readdata
+readdata[6] <= architecture_uart_regs:the_architecture_uart_regs.readdata
+readdata[7] <= architecture_uart_regs:the_architecture_uart_regs.readdata
+readdata[8] <= architecture_uart_regs:the_architecture_uart_regs.readdata
+readdata[9] <= architecture_uart_regs:the_architecture_uart_regs.readdata
+readdata[10] <= architecture_uart_regs:the_architecture_uart_regs.readdata
+readdata[11] <= architecture_uart_regs:the_architecture_uart_regs.readdata
+readdata[12] <= architecture_uart_regs:the_architecture_uart_regs.readdata
+readdata[13] <= architecture_uart_regs:the_architecture_uart_regs.readdata
+readdata[14] <= architecture_uart_regs:the_architecture_uart_regs.readdata
+readdata[15] <= architecture_uart_regs:the_architecture_uart_regs.readdata
+readyfordata <= architecture_uart_regs:the_architecture_uart_regs.readyfordata
+txd <= architecture_uart_tx:the_architecture_uart_tx.txd
 
 
-|architecture|architecture_rs232:rs232|architecture_rs232_tx:the_architecture_rs232_tx
+|architecture|architecture_uart:uart|architecture_uart_tx:the_architecture_uart_tx
 baud_divisor[0] => baud_rate_counter.DATAB
 baud_divisor[1] => baud_rate_counter.DATAB
 baud_divisor[2] => baud_rate_counter.DATAB
@@ -8628,7 +8628,7 @@ tx_shift_empty <= tx_shift_empty~reg0.DB_MAX_OUTPUT_PORT_TYPE
 txd <= txd~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|architecture|architecture_rs232:rs232|architecture_rs232_rx:the_architecture_rs232_rx
+|architecture|architecture_uart:uart|architecture_uart_rx:the_architecture_uart_rx
 baud_divisor[0] => baud_divisor[0].IN1
 baud_divisor[1] => baud_divisor[1].IN1
 baud_divisor[2] => baud_divisor[2].IN1
@@ -8662,7 +8662,7 @@ rx_data[7] <= rx_data[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 rx_overrun <= rx_overrun~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|architecture|architecture_rs232:rs232|architecture_rs232_rx:the_architecture_rs232_rx|architecture_rs232_rx_stimulus_source:the_architecture_rs232_rx_stimulus_source
+|architecture|architecture_uart:uart|architecture_uart_rx:the_architecture_uart_rx|architecture_uart_rx_stimulus_source:the_architecture_uart_rx_stimulus_source
 baud_divisor[0] => ~NO_FANOUT~
 baud_divisor[1] => ~NO_FANOUT~
 baud_divisor[2] => ~NO_FANOUT~
@@ -8680,7 +8680,7 @@ rxd => source_rxd.DATAIN
 source_rxd <= rxd.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|architecture|architecture_rs232:rs232|architecture_rs232_rx:the_architecture_rs232_rx|altera_std_synchronizer:the_altera_std_synchronizer
+|architecture|architecture_uart:uart|architecture_uart_rx:the_architecture_uart_rx|altera_std_synchronizer:the_altera_std_synchronizer
 clk => dreg[0].CLK
 clk => din_s1.CLK
 reset_n => dreg[0].ACLR
@@ -8689,7 +8689,7 @@ din => din_s1.DATAIN
 dout <= dout.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|architecture|architecture_rs232:rs232|architecture_rs232_regs:the_architecture_rs232_regs
+|architecture|architecture_uart:uart|architecture_uart_regs:the_architecture_uart_regs
 address[0] => Equal0.IN2
 address[0] => Equal1.IN2
 address[0] => Equal2.IN2
@@ -10742,45 +10742,45 @@ po_s1_writedata[29] <= altera_merlin_slave_translator:po_s1_translator.av_writed
 po_s1_writedata[30] <= altera_merlin_slave_translator:po_s1_translator.av_writedata
 po_s1_writedata[31] <= altera_merlin_slave_translator:po_s1_translator.av_writedata
 po_s1_chipselect <= altera_merlin_slave_translator:po_s1_translator.av_chipselect
-rs232_s1_address[0] <= altera_merlin_slave_translator:rs232_s1_translator.av_address
-rs232_s1_address[1] <= altera_merlin_slave_translator:rs232_s1_translator.av_address
-rs232_s1_address[2] <= altera_merlin_slave_translator:rs232_s1_translator.av_address
-rs232_s1_write <= altera_merlin_slave_translator:rs232_s1_translator.av_write
-rs232_s1_read <= altera_merlin_slave_translator:rs232_s1_translator.av_read
-rs232_s1_readdata[0] => rs232_s1_readdata[0].IN1
-rs232_s1_readdata[1] => rs232_s1_readdata[1].IN1
-rs232_s1_readdata[2] => rs232_s1_readdata[2].IN1
-rs232_s1_readdata[3] => rs232_s1_readdata[3].IN1
-rs232_s1_readdata[4] => rs232_s1_readdata[4].IN1
-rs232_s1_readdata[5] => rs232_s1_readdata[5].IN1
-rs232_s1_readdata[6] => rs232_s1_readdata[6].IN1
-rs232_s1_readdata[7] => rs232_s1_readdata[7].IN1
-rs232_s1_readdata[8] => rs232_s1_readdata[8].IN1
-rs232_s1_readdata[9] => rs232_s1_readdata[9].IN1
-rs232_s1_readdata[10] => rs232_s1_readdata[10].IN1
-rs232_s1_readdata[11] => rs232_s1_readdata[11].IN1
-rs232_s1_readdata[12] => rs232_s1_readdata[12].IN1
-rs232_s1_readdata[13] => rs232_s1_readdata[13].IN1
-rs232_s1_readdata[14] => rs232_s1_readdata[14].IN1
-rs232_s1_readdata[15] => rs232_s1_readdata[15].IN1
-rs232_s1_writedata[0] <= altera_merlin_slave_translator:rs232_s1_translator.av_writedata
-rs232_s1_writedata[1] <= altera_merlin_slave_translator:rs232_s1_translator.av_writedata
-rs232_s1_writedata[2] <= altera_merlin_slave_translator:rs232_s1_translator.av_writedata
-rs232_s1_writedata[3] <= altera_merlin_slave_translator:rs232_s1_translator.av_writedata
-rs232_s1_writedata[4] <= altera_merlin_slave_translator:rs232_s1_translator.av_writedata
-rs232_s1_writedata[5] <= altera_merlin_slave_translator:rs232_s1_translator.av_writedata
-rs232_s1_writedata[6] <= altera_merlin_slave_translator:rs232_s1_translator.av_writedata
-rs232_s1_writedata[7] <= altera_merlin_slave_translator:rs232_s1_translator.av_writedata
-rs232_s1_writedata[8] <= altera_merlin_slave_translator:rs232_s1_translator.av_writedata
-rs232_s1_writedata[9] <= altera_merlin_slave_translator:rs232_s1_translator.av_writedata
-rs232_s1_writedata[10] <= altera_merlin_slave_translator:rs232_s1_translator.av_writedata
-rs232_s1_writedata[11] <= altera_merlin_slave_translator:rs232_s1_translator.av_writedata
-rs232_s1_writedata[12] <= altera_merlin_slave_translator:rs232_s1_translator.av_writedata
-rs232_s1_writedata[13] <= altera_merlin_slave_translator:rs232_s1_translator.av_writedata
-rs232_s1_writedata[14] <= altera_merlin_slave_translator:rs232_s1_translator.av_writedata
-rs232_s1_writedata[15] <= altera_merlin_slave_translator:rs232_s1_translator.av_writedata
-rs232_s1_begintransfer <= altera_merlin_slave_translator:rs232_s1_translator.av_begintransfer
-rs232_s1_chipselect <= altera_merlin_slave_translator:rs232_s1_translator.av_chipselect
+uart_s1_address[0] <= altera_merlin_slave_translator:uart_s1_translator.av_address
+uart_s1_address[1] <= altera_merlin_slave_translator:uart_s1_translator.av_address
+uart_s1_address[2] <= altera_merlin_slave_translator:uart_s1_translator.av_address
+uart_s1_write <= altera_merlin_slave_translator:uart_s1_translator.av_write
+uart_s1_read <= altera_merlin_slave_translator:uart_s1_translator.av_read
+uart_s1_readdata[0] => uart_s1_readdata[0].IN1
+uart_s1_readdata[1] => uart_s1_readdata[1].IN1
+uart_s1_readdata[2] => uart_s1_readdata[2].IN1
+uart_s1_readdata[3] => uart_s1_readdata[3].IN1
+uart_s1_readdata[4] => uart_s1_readdata[4].IN1
+uart_s1_readdata[5] => uart_s1_readdata[5].IN1
+uart_s1_readdata[6] => uart_s1_readdata[6].IN1
+uart_s1_readdata[7] => uart_s1_readdata[7].IN1
+uart_s1_readdata[8] => uart_s1_readdata[8].IN1
+uart_s1_readdata[9] => uart_s1_readdata[9].IN1
+uart_s1_readdata[10] => uart_s1_readdata[10].IN1
+uart_s1_readdata[11] => uart_s1_readdata[11].IN1
+uart_s1_readdata[12] => uart_s1_readdata[12].IN1
+uart_s1_readdata[13] => uart_s1_readdata[13].IN1
+uart_s1_readdata[14] => uart_s1_readdata[14].IN1
+uart_s1_readdata[15] => uart_s1_readdata[15].IN1
+uart_s1_writedata[0] <= altera_merlin_slave_translator:uart_s1_translator.av_writedata
+uart_s1_writedata[1] <= altera_merlin_slave_translator:uart_s1_translator.av_writedata
+uart_s1_writedata[2] <= altera_merlin_slave_translator:uart_s1_translator.av_writedata
+uart_s1_writedata[3] <= altera_merlin_slave_translator:uart_s1_translator.av_writedata
+uart_s1_writedata[4] <= altera_merlin_slave_translator:uart_s1_translator.av_writedata
+uart_s1_writedata[5] <= altera_merlin_slave_translator:uart_s1_translator.av_writedata
+uart_s1_writedata[6] <= altera_merlin_slave_translator:uart_s1_translator.av_writedata
+uart_s1_writedata[7] <= altera_merlin_slave_translator:uart_s1_translator.av_writedata
+uart_s1_writedata[8] <= altera_merlin_slave_translator:uart_s1_translator.av_writedata
+uart_s1_writedata[9] <= altera_merlin_slave_translator:uart_s1_translator.av_writedata
+uart_s1_writedata[10] <= altera_merlin_slave_translator:uart_s1_translator.av_writedata
+uart_s1_writedata[11] <= altera_merlin_slave_translator:uart_s1_translator.av_writedata
+uart_s1_writedata[12] <= altera_merlin_slave_translator:uart_s1_translator.av_writedata
+uart_s1_writedata[13] <= altera_merlin_slave_translator:uart_s1_translator.av_writedata
+uart_s1_writedata[14] <= altera_merlin_slave_translator:uart_s1_translator.av_writedata
+uart_s1_writedata[15] <= altera_merlin_slave_translator:uart_s1_translator.av_writedata
+uart_s1_begintransfer <= altera_merlin_slave_translator:uart_s1_translator.av_begintransfer
+uart_s1_chipselect <= altera_merlin_slave_translator:uart_s1_translator.av_chipselect
 
 
 |architecture|architecture_mm_interconnect_0:mm_interconnect_0|altera_merlin_master_translator:nios2_data_master_translator
@@ -12564,7 +12564,7 @@ av_response[1] => ~NO_FANOUT~
 av_writeresponsevalid => uav_writeresponsevalid.DATAIN
 
 
-|architecture|architecture_mm_interconnect_0:mm_interconnect_0|altera_merlin_slave_translator:rs232_s1_translator
+|architecture|architecture_mm_interconnect_0:mm_interconnect_0|altera_merlin_slave_translator:uart_s1_translator
 clk => in_transfer.CLK
 clk => end_beginbursttransfer.CLK
 clk => end_begintransfer.CLK
@@ -21388,7 +21388,7 @@ almost_full_data <= <GND>
 almost_empty_data <= <GND>
 
 
-|architecture|architecture_mm_interconnect_0:mm_interconnect_0|altera_merlin_slave_agent:rs232_s1_agent
+|architecture|architecture_mm_interconnect_0:mm_interconnect_0|altera_merlin_slave_agent:uart_s1_agent
 clk => clk.IN1
 reset => reset.IN1
 m0_address[0] <= <GND>
@@ -22003,7 +22003,7 @@ rp_startofpacket <= altera_merlin_burst_uncompressor:uncompressor.source_startof
 rp_endofpacket <= altera_merlin_burst_uncompressor:uncompressor.source_endofpacket
 
 
-|architecture|architecture_mm_interconnect_0:mm_interconnect_0|altera_merlin_slave_agent:rs232_s1_agent|altera_merlin_burst_uncompressor:uncompressor
+|architecture|architecture_mm_interconnect_0:mm_interconnect_0|altera_merlin_slave_agent:uart_s1_agent|altera_merlin_burst_uncompressor:uncompressor
 clk => burst_uncompress_address_offset[0].CLK
 clk => burst_uncompress_address_offset[1].CLK
 clk => burst_uncompress_address_offset[2].CLK
@@ -22229,7 +22229,7 @@ source_burstsize[1] <= sink_burstsize[1].DB_MAX_OUTPUT_PORT_TYPE
 source_burstsize[2] <= sink_burstsize[2].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|architecture|architecture_mm_interconnect_0:mm_interconnect_0|altera_avalon_sc_fifo:rs232_s1_agent_rsp_fifo
+|architecture|architecture_mm_interconnect_0:mm_interconnect_0|altera_avalon_sc_fifo:uart_s1_agent_rsp_fifo
 clk => csr_readdata[0]~reg0.CLK
 clk => csr_readdata[1]~reg0.CLK
 clk => csr_readdata[2]~reg0.CLK

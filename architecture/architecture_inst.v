@@ -6,8 +6,8 @@
 		.led_export              (<connected-to-led_export>),              //   led.export
 		.reset_reset_n           (<connected-to-reset_reset_n>),           // reset.reset_n
 		.rs_writeresponsevalid_n (<connected-to-rs_writeresponsevalid_n>), //    rs.writeresponsevalid_n
-		.rs232_rxd               (<connected-to-rs232_rxd>),               // rs232.rxd
-		.rs232_txd               (<connected-to-rs232_txd>),               //      .txd
-		.rw_writeresponsevalid_n (<connected-to-rw_writeresponsevalid_n>)  //    rw.writeresponsevalid_n
+		.rw_writeresponsevalid_n (<connected-to-rw_writeresponsevalid_n>), //    rw.writeresponsevalid_n
+		.uart_rxd                (<connected-to-uart_rxd>),                //  uart.rxd
+		.uart_txd                (<connected-to-uart_txd>)                 //      .txd
 	);
 
